@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon calculator</title>
+</head>
+<body>
+    <p class="title"></p>
+    
+    <div>
+        <input type="text" placeholder="Cost" class="js-input" onkeydown="handleCostKeyDown(event);">
+
+        <button class="js-calculate" onclick="calculatePrice();">
+
+        </button>
+    </div>
+    <p class="js-print"></p>
+    <script>
+
+        function handleCostKeyDown(event){
+            if(event.key === 'Enter'){
+                calculatePrice();
+            }
+        }
+        document.querySelector('.title').innerHTML = `Amazon Shipping Calculator`;
+
+        const calculateElement = document.querySelector('.js-calculate');
+        calculateElement.innerHTML = 'Calculate';
+
+        function calculatePrice(){
+            const inputElement = Number(document.querySelector('.js-input').value);
+            let finalPrice;
+            if(inputElement <= 40){
+                finalPrice = inputElement + 10;
+            } else{
+                finalPrice = inputElement
+            }
+
+            document.querySelector('.js-print').innerHTML = `El precio es ${finalPrice}`;
+        }
+    </script>
+</body>
+</html>
